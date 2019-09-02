@@ -17,6 +17,8 @@ class CreateSourcesTable extends Migration
             $table->bigIncrements('id');
             $table->string('type');
             $table->string('url');
+            $table->boolean('valid')->default(true);
+            $table->integer('current_level')->default(0);
             $table->timestamps();
             $table->index('url');
         });

@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Check;
 use Ixudra\Curl\Facades\Curl;
 use App\Models\Source;
+use ErrorException;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -39,16 +40,6 @@ class FetchSourceData implements ShouldQueue
      */
     public function handle()
     {
-        $response = Curl::to('https://api.github.com/repos/jasonrudolph/keyboard')
-            ->withHeader('User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
-            ->get();
-
-        $json = json_decode($response);
-        $count = $json->stargazers_count;
-
-        Check::create([
-            'source_id' => $this->source->id,
-            'value' => $count,
-        ]);
+        $this->source->fetch();
     }
 }
