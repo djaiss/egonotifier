@@ -25,6 +25,15 @@ class Source extends Model
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'valid' => 'boolean',
+    ];
+
+    /**
      * Get the action records associated with the source.
      *
      * @return HasMany

@@ -24,7 +24,9 @@
     </filter>
     <php>
         <server name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="base64:NTrXToqFZJlv48dgPc+kNpc3SBt333TfDnF1mDShsBg="/>
         <server name="BCRYPT_ROUNDS" value="4"/>
+        <env name="DB_CONNECTION" value="testing"/>
         <server name="CACHE_DRIVER" value="array"/>
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
