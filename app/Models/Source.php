@@ -79,6 +79,11 @@ class Source extends Model
             ->withHeader('User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
             ->get();
 
+        // curl the url
+        // check the html code
+        // check the number of stars
+
+
         $json = json_decode($response);
 
         try {
