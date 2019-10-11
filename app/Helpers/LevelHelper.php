@@ -2,8 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Models\Check;
-
 class LevelHelper
 {
     /**
@@ -119,43 +117,5 @@ class LevelHelper
         }
 
         return 0;
-    }
-
-    public static function process(Check $check) : array
-    {
-        $level = [];
-        if ($check->value < 10) {
-            $level = [
-                'lower_bracket' => 1,
-                'upper_bracket' => 10,
-                'current_value' => $check->value,
-            ];
-        }
-
-        if ($check->value >= 10 && $check->value < 20) {
-            $level = [
-                'lower_bracket' => 10,
-                'upper_bracket' => 20,
-                'current_value' => $check->value,
-            ];
-        }
-
-        if ($check->value >= 20 && $check->value < 30) {
-            $level = [
-                'lower_bracket' => 20,
-                'upper_bracket' => 30,
-                'current_value' => $check->value,
-            ];
-        }
-
-        if ($check->value >= 30 && $check->value < 40) {
-            $level = [
-                'lower_bracket' => 30,
-                'upper_bracket' => 40,
-                'current_value' => $check->value,
-            ];
-        }
-
-        return $level;
     }
 }

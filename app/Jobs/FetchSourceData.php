@@ -2,10 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Models\Check;
-use Ixudra\Curl\Facades\Curl;
 use App\Models\Source;
-use ErrorException;
+use App\Services\FetchSource;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -40,6 +38,8 @@ class FetchSourceData implements ShouldQueue
      */
     public function handle()
     {
-        $this->source->fetch();
+        (new FetchSource)->execute([
+            'source_id' => $this->source->id,
+        ]);
     }
 }

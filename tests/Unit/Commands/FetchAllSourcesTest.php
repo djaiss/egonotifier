@@ -2,14 +2,10 @@
 
 namespace Tests\Unit\Commands;
 
-use App\Jobs\FetchSourceData;
 use Tests\TestCase;
-use App\Models\User\User;
-use App\Jobs\LogAccountAudit;
-use App\Models\Company\Employee;
 use App\Models\Source;
+use App\Jobs\FetchSourceData;
 use Illuminate\Support\Facades\Queue;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FetchAllSourcesTest extends TestCase

@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\FetchSourceData;
 use App\Models\Source;
+use App\Jobs\FetchSourceData;
 use Illuminate\Console\Command;
 
 class FetchAllSources extends Command
@@ -45,6 +45,6 @@ class FetchAllSources extends Command
                 $sources->each(function (Source $source) {
                     FetchSourceData::dispatch($source)->onQueue('low');
                 });
-        });
+            });
     }
 }

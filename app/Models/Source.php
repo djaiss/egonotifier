@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Helpers\LevelHelper;
 use App\User;
 use ErrorException;
+use App\Helpers\LevelHelper;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Source extends Model
 {
@@ -54,21 +53,6 @@ class Source extends Model
     }
 
     /**
-     * Build the URL that needs to be fetched.
-     *
-     * @return string
-     */
-    public function buildUrl() : string
-    {
-        $url = '';
-        if ($this->type == 'github') {
-            $url = 'https://api.github.com/repos/'.$this->url;
-        }
-
-        return $url;
-    }
-
-    /**
      * Fetch the data of the source.
      *
      * @return void
@@ -82,7 +66,6 @@ class Source extends Model
         // curl the url
         // check the html code
         // check the number of stars
-
 
         $json = json_decode($response);
 
@@ -114,7 +97,6 @@ class Source extends Model
 
     public function setCurrentLevel(Check $check)
     {
-
     }
 
     /**
@@ -135,6 +117,5 @@ class Source extends Model
 
     public function warnUsers()
     {
-
     }
 }
