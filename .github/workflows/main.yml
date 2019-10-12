@@ -21,7 +21,7 @@ jobs:
     - name: Prepare database
       run: |
         mkdir -p database
-        cp phpunit.testing.xml phpunit.xml
+        mv phpunit.testing.xml phpunit.xml
         touch database/database.sqlite
         php artisan migrate
     - name: Run Testsuite
