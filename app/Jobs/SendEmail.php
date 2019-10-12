@@ -4,7 +4,9 @@ namespace App\Jobs;
 
 use App\User;
 use App\Models\Source;
+use App\Mail\SourceChanged;
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -56,6 +58,7 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to($this->user->email)
+            ->queue(new SourceChanged($this->source, $this->sentence));
     }
 }
