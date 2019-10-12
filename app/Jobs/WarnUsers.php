@@ -2,7 +2,6 @@
 
 namespace App\Jobs;
 
-use App\User;
 use App\Models\Source;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -10,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class SendEmail implements ShouldQueue
+class WarnUsers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -22,31 +21,22 @@ class SendEmail implements ShouldQueue
     public $source;
 
     /**
-     * The sentence.
+     * The nature of change.
      *
      * @var array
      */
-    public $sentence;
-
-    /**
-     * The user instance.
-     *
-     * @var array
-     */
-    public $user;
+    public $change;
 
     /**
      * Create a new job instance.
      *
-     * @param User $user
      * @param Source $source
-     * @param string $sentence
+     * @param string $change
      */
-    public function __construct(User $user, Source $source, string $sentence)
+    public function __construct(Source $source, string $change)
     {
         $this->source = $source;
-        $this->sentence = $sentence;
-        $this->user = $user;
+        $this->change = $change;
     }
 
     /**
@@ -56,6 +46,11 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        // find all the users that are subscribed to this source
+        $users = $this->source->users;
+
+        foreach ($users as $user) {
+            BuildEmail::dispatch($this->source, $this->change, $user);
+        }
     }
 }

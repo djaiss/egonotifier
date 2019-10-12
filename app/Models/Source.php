@@ -107,15 +107,12 @@ class Source extends Model
      */
     public function checkLevels(Check $check)
     {
+        $levelHelper = new LevelHelper();
         $previousLevel = $this->current_level;
-        $actualLevel = LevelHelper::checkLevel($check->value);
+        $actualLevel = $levelHelper->checkLevel($check->value);
 
         if ($previousLevel != $actualLevel) {
             return;
         }
-    }
-
-    public function warnUsers()
-    {
     }
 }

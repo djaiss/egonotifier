@@ -3,16 +3,12 @@
 namespace Tests\Unit\Services;
 
 use Tests\TestCase;
+use App\Models\Check;
 use App\Models\Source;
-use App\Services\AddSource;
-use App\Services\FetchSource;
-use App\Exceptions\InvalidSourceException;
+use App\Jobs\WarnUsers;
+use App\Services\AnalyzeSource;
 use Illuminate\Support\Facades\Queue;
 use App\Exceptions\NoHistoryException;
-use App\Jobs\WarnUsers;
-use App\Models\Check;
-use App\Services\AnalyzeSource;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AnalyzeSourceTest extends TestCase

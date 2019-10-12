@@ -13,24 +13,40 @@ class LevelHelperTest extends TestCase
     /** @test */
     public function it_returns_the_current_level() : void
     {
+        $levelHelper = new LevelHelper();
         $this->assertEquals(
             13,
-            LevelHelper::checkLevel(44)
+            $levelHelper->checkLevel(44)
         );
 
         $this->assertEquals(
             36,
-            LevelHelper::checkLevel(5123)
+            $levelHelper->checkLevel(5123)
         );
 
         $this->assertEquals(
             95,
-            LevelHelper::checkLevel(5000000)
+            $levelHelper->checkLevel(5000000)
         );
 
         $this->assertEquals(
             0,
-            LevelHelper::checkLevel(0)
+            $levelHelper->checkLevel(0)
+        );
+    }
+
+    /** @test */
+    public function it_returns_the_current_value() : void
+    {
+        $levelHelper = new LevelHelper();
+        $this->assertEquals(
+            10000,
+            $levelHelper->getValue(41)
+        );
+
+        $this->assertEquals(
+            0,
+            $levelHelper->getValue(0)
         );
     }
 }

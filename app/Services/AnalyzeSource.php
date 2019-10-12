@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Models\Source;
 use App\Jobs\WarnUsers;
-use App\Exceptions\InvalidSourceException;
 use App\Exceptions\NoHistoryException;
+use App\Exceptions\InvalidSourceException;
 
 class AnalyzeSource extends BaseService
 {

@@ -135,16 +135,18 @@ class FetchSource extends BaseService
         }
         $commits = (int) str_replace(',', '', $commits);
 
+        $levelHelper = new LevelHelper();
+
         return Check::create([
             'source_id' => $source->id,
             'watchers' => $watchers,
-            'watchers_level' => LevelHelper::checkLevel($watchers),
+            'watchers_level' => $levelHelper->checkLevel($watchers),
             'stars' => $stars,
-            'stars_level' => LevelHelper::checkLevel($stars),
+            'stars_level' => $levelHelper->checkLevel($stars),
             'forks' => $forks,
-            'forks_level' => LevelHelper::checkLevel($forks),
+            'forks_level' => $levelHelper->checkLevel($forks),
             'commits' => $commits,
-            'commits_level' => LevelHelper::checkLevel($commits),
+            'commits_level' => $levelHelper->checkLevel($commits),
         ]);
     }
 }
