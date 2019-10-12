@@ -14,7 +14,18 @@ class Check extends Model
      */
     protected $fillable = [
         'source_id',
-        'value',
+        'watchers',
+        'watchers_level',
+        'stars',
+        'stars_level',
+        'forks',
+        'forks_level',
+        'commits',
+        'commits_level',
+        'releases',
+        'releases_level',
+        'contributors',
+        'contributors_level',
     ];
 
     /**

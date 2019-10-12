@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Models\Source;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -36,4 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the source records associated with the source.
+     *
+     * @return belongsToMany
+     */
+    public function sources()
+    {
+        return $this->belongsToMany(Source::class);
+    }
 }

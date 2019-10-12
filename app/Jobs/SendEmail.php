@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\User;
+use App\Models\Source;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -13,13 +15,38 @@ class SendEmail implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
+     * The source instance.
+     *
+     * @var array
+     */
+    public $source;
+
+    /**
+     * The sentence.
+     *
+     * @var array
+     */
+    public $sentence;
+
+    /**
+     * The user instance.
+     *
+     * @var array
+     */
+    public $user;
+
+    /**
      * Create a new job instance.
      *
-     * @return void
+     * @param User $user
+     * @param Source $source
+     * @param string $sentence
      */
-    public function __construct()
+    public function __construct(User $user, Source $source, string $sentence)
     {
-        //
+        $this->source = $source;
+        $this->sentence = $sentence;
+        $this->user = $user;
     }
 
     /**
