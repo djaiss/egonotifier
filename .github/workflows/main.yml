@@ -18,7 +18,10 @@ jobs:
       run: |
         cp .env.ci .env
         php artisan key:generate
+    - name: Prepare database
+      run: |
         mkdir -p database
+        cp phpunit.testing.xml phpunit.xml
         touch database/database.sqlite
         php artisan migrate
     - name: Run Testsuite
