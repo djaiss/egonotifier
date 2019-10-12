@@ -16,15 +16,11 @@ jobs:
         composer install --prefer-dist --no-scripts -q -o;
     - name: Prepare Laravel Application
       run: |
-        cp .env.testing .env
+        cp .env.ci .env
         php artisan key:generate
         mkdir -p database
         touch database/database.sqlite
         php artisan migrate
-    - name: Compile assets
-      run: |
-        yarn install --pure-lockfile
-        yarn run production --progress false
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
     - name: Run CS Fixer
