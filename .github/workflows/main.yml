@@ -18,6 +18,9 @@ jobs:
       run: |
         cp .env.testing .env
         php artisan key:generate
+        mkdir -p database
+        touch database/database.sqlite
+        php artisan migrate
     - name: Compile assets
       run: |
         yarn install --pure-lockfile
