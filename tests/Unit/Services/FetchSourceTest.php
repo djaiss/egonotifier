@@ -83,7 +83,7 @@ class FetchSourceTest extends TestCase
         $source = (new FetchSource)->execute($request);
     }
 
-    public function it_fails_if_wrong_parameters_are_given(): void
+    public function it_fails_if_wrong_parameters_are_given() : void
     {
         $request = [];
 

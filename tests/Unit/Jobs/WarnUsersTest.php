@@ -29,7 +29,7 @@ class WarnUsersTest extends TestCase
     }
 
     /** @test */
-    public function it_warns_users_that_a_source_changed(): void
+    public function it_warns_users_that_a_source_changed() : void
     {
         Bus::fake();
 

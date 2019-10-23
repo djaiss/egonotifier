@@ -28,7 +28,7 @@ class FetchSource extends BaseService
      *
      * @return array
      */
-    public function rules(): array
+    public function rules() : array
     {
         return [
             'source_id' => 'required|integer|exists:sources,id',
