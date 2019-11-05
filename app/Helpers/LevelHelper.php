@@ -108,7 +108,7 @@ class LevelHelper
      * @param integer $currentValue
      * @return integer
      */
-    public function checkLevel(int $currentValue) : int
+    public function checkLevel(int $currentValue): int
     {
         foreach ($this->levels as $key => $value) {
             if ($value < $currentValue) {
@@ -119,7 +119,13 @@ class LevelHelper
         return 0;
     }
 
-    public function getValue(int $currentLevel) : int
+    /**
+     * Get the value corresponding to a given level.
+     *
+     * @param  int
+     * @return int
+     */
+    public function getValue(int $currentLevel): int
     {
         foreach ($this->levels as $key => $value) {
             if ($key == $currentLevel) {

@@ -11,7 +11,7 @@ class LevelHelperTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_returns_the_current_level() : void
+    public function it_returns_the_current_level(): void
     {
         $levelHelper = new LevelHelper();
         $this->assertEquals(
@@ -36,7 +36,7 @@ class LevelHelperTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_the_current_value() : void
+    public function it_returns_the_current_value(): void
     {
         $levelHelper = new LevelHelper();
         $this->assertEquals(

@@ -16,7 +16,7 @@ class SendEmailTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_queues_an_email() : void
+    public function it_queues_an_email(): void
     {
         Mail::fake();
 

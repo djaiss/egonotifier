@@ -13,7 +13,7 @@ class FetchAllSourcesTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_triggers_a_job_to_fetch_source_data() : void
+    public function it_triggers_a_job_to_fetch_source_data(): void
     {
         Queue::fake();
 
@@ -27,7 +27,7 @@ class FetchAllSourcesTest extends TestCase
     }
 
     /** @test */
-    public function it_doesnt_trigger_a_job() : void
+    public function it_doesnt_trigger_a_job(): void
     {
         Queue::fake();
 

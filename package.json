@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "tachyons": "^4.11.1",
         "tailwindcss": "^1.1.2"
     }
 }

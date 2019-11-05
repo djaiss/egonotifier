@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+<div class="">
+  @if (session('error'))
+  <div class="alert alert-success">
+    {{ session('error') }}
+  </div>
+  @endif
+  <form method="POST" action="/create">
+    @csrf
+    <input type="text" name="username" value="{{ old('email') }}" required autofocus>
+    <input type="text" name="repository" value="{{ old('email') }}" required autofocus>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+  <ul>
+    @foreach ($sources as $source)
+    <li>{{ $source['url'] }}</li>
+    <li>{{ $source['watchers'] }} watchers | {{ $source['stars'] }} stars | {{ $source['forks'] }} forks</li>
+    <li>Next warning: {{ $source['watchers_next_level'] }}</li>
+    @endforeach
+  </ul>
 </div>
 @endsection

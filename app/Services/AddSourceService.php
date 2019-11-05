@@ -3,19 +3,19 @@
 namespace App\Services;
 
 use App\Models\Source;
-use League\Uri\Parser;
 
-class AddSource extends BaseService
+class AddSourceService extends BaseService
 {
     /**
      * Get the validation rules that apply to the service.
      *
      * @return array
      */
-    public function rules() : array
+    public function rules(): array
     {
         return [
-            'url' => 'required|string',
+            'username' => 'required|string',
+            'repository' => 'required|string',
         ];
     }
 
@@ -25,17 +25,13 @@ class AddSource extends BaseService
      * @param array $data
      * @return Source
      */
-    public function execute(array $data) : Source
+    public function execute(array $data): Source
     {
         $this->validate($data);
 
-        // get the host of the URL
-        $parser = new Parser();
-        $host = $parser->parse($data['url'])['host'];
-
         $source = Source::firstOrCreate([
-            'url' => $data['url'],
-            'type' => $host,
+            'username' => $data['username'],
+            'repository' => $data['repository'],
         ]);
 
         return $source;

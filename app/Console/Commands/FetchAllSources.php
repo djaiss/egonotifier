@@ -20,7 +20,7 @@ class FetchAllSources extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Fetch all sources data';
 
     /**
      * Create a new command instance.

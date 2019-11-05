@@ -16,7 +16,7 @@ class BuildEmailTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function it_prepares_the_email_for_a_watcher_change() : void
+    public function it_prepares_the_email_for_a_watcher_change(): void
     {
         Bus::fake();
 
@@ -43,7 +43,7 @@ class BuildEmailTest extends TestCase
     }
 
     /** @test */
-    public function it_prepares_the_email_for_a_star_change() : void
+    public function it_prepares_the_email_for_a_star_change(): void
     {
         Bus::fake();
 
@@ -70,7 +70,7 @@ class BuildEmailTest extends TestCase
     }
 
     /** @test */
-    public function it_prepares_the_email_for_a_fork_change() : void
+    public function it_prepares_the_email_for_a_fork_change(): void
     {
         Bus::fake();
 
@@ -97,7 +97,7 @@ class BuildEmailTest extends TestCase
     }
 
     /** @test */
-    public function it_prepares_the_email_for_a_commit_change() : void
+    public function it_prepares_the_email_for_a_commit_change(): void
     {
         Bus::fake();
 

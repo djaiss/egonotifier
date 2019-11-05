@@ -12,7 +12,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Services\FetchSourceInformationService;
 
-class FetchSourceData implements ShouldQueue
+class CheckIfSourceChanged implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -40,14 +40,8 @@ class FetchSourceData implements ShouldQueue
      */
     public function handle()
     {
-        try {
-            (new FetchSourceInformationService)->execute([
-                'source_id' => $this->source->id,
-            ]);
-        } catch (InvalidSourceException $e) {
-            exit;
-        }
-
-        CheckIfSourceChanged::dispatch($this->source)->onQueue('low');
+        (new AnalyzeSourceService)->execute([
+            'source_id' => $this->source->id,
+        ]);
     }
 }

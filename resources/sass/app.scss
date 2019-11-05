@@ -1,8 +1,21 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "~tachyons/css/tachyons.min";
 
-// Variables
-@import 'variables';
+nav {
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #fff;
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+  a {
+    color: #4d4d4f;
+
+    &:hover {
+      border-bottom-width: 0;
+    }
+
+    &.special {
+      &:hover {
+        border-radius: 11px;
+        box-shadow: 1px 0px 1px rgba(43, 45, 80, 0.16), -1px 1px 1px rgba(43, 45, 80, 0.16), 0px 1px 4px rgba(43, 45, 80, 0.18);
+      }
+    }
+  }
+}

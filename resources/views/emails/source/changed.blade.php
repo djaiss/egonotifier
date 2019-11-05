@@ -2,7 +2,7 @@
 The following repository:
 
 ***********
-{{ $source->url }}
+https:/github.com/{{ $source->username }}/{{ $source->repository }}
 ***********
 
 {{ $sentence }}

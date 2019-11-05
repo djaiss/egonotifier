@@ -15,12 +15,10 @@ class CreateSourcesTable extends Migration
     {
         Schema::create('sources', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
-            $table->string('url');
+            $table->string('username');
+            $table->string('repository');
             $table->boolean('valid')->default(true);
-            //$table->integer('current_level')->default(0);
             $table->timestamps();
-            $table->index('url');
         });
 
         Schema::create('source_user', function (Blueprint $table) {

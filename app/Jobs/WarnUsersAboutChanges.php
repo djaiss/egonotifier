@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class WarnUsers implements ShouldQueue
+class WarnUsersAboutChanges implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -50,7 +50,7 @@ class WarnUsers implements ShouldQueue
         $users = $this->source->users;
 
         foreach ($users as $user) {
-            BuildEmail::dispatch($this->source, $this->change, $user);
+            BuildEmail::dispatch($this->source, $this->change, $user)->onQueue('low');
         }
     }
 }

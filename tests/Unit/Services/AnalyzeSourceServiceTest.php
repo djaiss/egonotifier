@@ -5,18 +5,18 @@ namespace Tests\Unit\Services;
 use Tests\TestCase;
 use App\Models\Check;
 use App\Models\Source;
-use App\Jobs\WarnUsers;
-use App\Services\AnalyzeSource;
+use App\Jobs\WarnUsersAboutChanges;
 use Illuminate\Support\Facades\Queue;
 use App\Exceptions\NoHistoryException;
+use App\Services\AnalyzeSourceService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AnalyzeSourceTest extends TestCase
+class AnalyzeSourceServiceTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
-    public function it_analyzes_a_source() : void
+    public function it_analyzes_a_source(): void
     {
         Queue::fake();
 
@@ -26,26 +26,24 @@ class AnalyzeSourceTest extends TestCase
             'watchers_level' => 20,
             'stars_level' => 38,
             'forks_level' => 27,
-            'commits_level' => 29,
         ]);
         factory(Check::class)->create([
             'source_id' => $source->id,
             'watchers_level' => 21,
             'stars_level' => 38,
             'forks_level' => 27,
-            'commits_level' => 29,
         ]);
 
         $request = [
             'source_id' => $source->id,
         ];
 
-        (new AnalyzeSource)->execute($request);
-        Queue::assertPushed(WarnUsers::class);
+        (new AnalyzeSourceService)->execute($request);
+        Queue::assertPushed(WarnUsersAboutChanges::class);
     }
 
     /** @test */
-    public function it_analyzes_a_source_and_doesnt_warn_users_as_no_changes_occured() : void
+    public function it_analyzes_a_source_and_doesnt_warn_users_as_no_changes_occured(): void
     {
         Queue::fake();
 
@@ -58,13 +56,13 @@ class AnalyzeSourceTest extends TestCase
             'source_id' => $source->id,
         ];
 
-        (new AnalyzeSource)->execute($request);
+        (new AnalyzeSourceService)->execute($request);
 
         Queue::assertNothingPushed();
     }
 
     /** @test */
-    public function it_cant_analyze_a_source_without_historic_data() : void
+    public function it_cant_analyze_a_source_without_historic_data(): void
     {
         $source = factory(Source::class)->create([]);
 
@@ -73,7 +71,7 @@ class AnalyzeSourceTest extends TestCase
         ];
 
         $this->expectException(NoHistoryException::class);
-        $source = (new AnalyzeSource)->execute($request);
+        $source = (new AnalyzeSourceService)->execute($request);
 
         // test also fails with only one point of historic data
         factory(Check::class)->create([
@@ -85,6 +83,6 @@ class AnalyzeSourceTest extends TestCase
         ];
 
         $this->expectException(NoHistoryException::class);
-        $source = (new AnalyzeSource)->execute($request);
+        $source = (new AnalyzeSourceService)->execute($request);
     }
 }
