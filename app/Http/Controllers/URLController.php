@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\InvalidSourceException;
 use Illuminate\Http\Request;
 use App\Services\AddSourceService;
 use Illuminate\Support\Facades\Auth;
 use App\Services\LinkSourceToUserService;
+use App\Exceptions\InvalidSourceException;
 use App\Services\FetchSourceInformationService;
-use Illuminate\Support\Facades\Validator;
 
 class URLController extends Controller
 {

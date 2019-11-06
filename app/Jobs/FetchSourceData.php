@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Source;
 use Illuminate\Bus\Queueable;
-use App\Services\AnalyzeSourceService;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Exceptions\InvalidSourceException;

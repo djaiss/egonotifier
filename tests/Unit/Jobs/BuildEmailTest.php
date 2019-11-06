@@ -95,31 +95,4 @@ class BuildEmailTest extends TestCase
                 && $job->sentence == 'has reached 200 forks (current number: 240).';
         });
     }
-
-    /** @test */
-    public function it_prepares_the_email_for_a_commit_change(): void
-    {
-        Bus::fake();
-
-        $source = factory(Source::class)->create([]);
-        $michael = factory(User::class)->create([]);
-        $source->users()->attach(
-            $michael->id
-        );
-        factory(Check::class)->create([
-            'source_id' => $source->id,
-            'commits' => '240',
-            'commits_level' => 20,
-        ]);
-        $change = 'commits';
-
-        $job = new BuildEmail($source, $change, $michael);
-        $job->handle();
-
-        Bus::assertDispatched(SendEmail::class, function ($job) use ($michael, $source) {
-            return $job->user->id === $michael->id
-                && $job->source->id === $source->id
-                && $job->sentence == 'has reached 200 commits (current number: 240).';
-        });
-    }
 }

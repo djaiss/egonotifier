@@ -54,7 +54,7 @@ class AnalyzeSourceService extends BaseService
         $secondLastCheck = $source->checks()->orderBy('created_at', 'desc')->skip(1)->take(1)->first();
 
         if (!$latestCheck || !$secondLastCheck) {
-            exit;
+            throw new NoHistoryException();
         }
 
         if ($latestCheck->watchers_level != $secondLastCheck->watchers_level) {
