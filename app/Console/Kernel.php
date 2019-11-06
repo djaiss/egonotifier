@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(FetchAllSources::class)->everyMinute();
+        $schedule->command(FetchAllSources::class)->everyFiveMinutes();
     }
 
     /**

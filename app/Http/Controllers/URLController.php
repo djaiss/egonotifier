@@ -25,8 +25,8 @@ class URLController extends Controller
             ]);
         } catch (InvalidSourceException $e) {
             $source->delete();
-            return redirect('home')
-                ->with('error', 'Profile updated!');
+            return redirect('add')
+                ->with('error', 'The repository you are trying to monitor seems invalid.');
         }
 
         (new LinkSourceToUserService)->execute([
@@ -35,5 +35,10 @@ class URLController extends Controller
         ]);
 
         return redirect('/home');
+    }
+
+    public function create()
+    {
+        return view('add');
     }
 }

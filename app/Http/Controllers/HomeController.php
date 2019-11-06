@@ -39,10 +39,12 @@ class HomeController extends Controller
                 'watchers_next_level' => $levelHelper->getValue($source->getNextLevel('watchers_level')),
                 'stars_next_level' => $levelHelper->getValue($source->getNextLevel('stars_level')),
                 'forks_next_level' => $levelHelper->getValue($source->getNextLevel('forks_level')),
+                'check_last_date' => $check->created_at->diffForHumans(),
             ]);
         }
 
         return view('home')
+            ->with('email', auth()->user()->email)
             ->with('sources', $sourcesCollection);
     }
 }
