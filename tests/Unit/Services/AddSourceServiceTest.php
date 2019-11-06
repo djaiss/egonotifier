@@ -4,27 +4,28 @@ namespace Tests\Unit\Services;
 
 use Tests\TestCase;
 use App\Models\Source;
-use App\Services\AddSource;
+use App\Services\AddSourceService;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class AddSourceTest extends TestCase
+class AddSourceServiceTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
-    public function it_adds_a_source() : void
+    public function it_adds_a_source(): void
     {
         $request = [
-            'url' => 'https://github.com',
+            'username' => 'monicahq',
+            'repository' => 'monica',
         ];
 
-        $source = (new AddSource)->execute($request);
+        $source = (new AddSourceService)->execute($request);
 
         $this->assertDatabaseHas('sources', [
             'id' => $source->id,
-            'type' => 'github.com',
-            'url' => 'https://github.com',
+            'username' => 'monicahq',
+            'repository' => 'monica',
         ]);
 
         $this->assertInstanceOf(
@@ -34,29 +35,30 @@ class AddSourceTest extends TestCase
     }
 
     /** @test */
-    public function it_adds_a_source_but_the_source_already_exists() : void
+    public function it_adds_a_source_but_the_source_already_exists(): void
     {
         $source = factory(Source::class)->create([]);
 
         $request = [
-            'url' => 'https://github.com/monicahq/monica',
+            'username' => 'monicahq',
+            'repository' => 'monica',
         ];
 
-        (new AddSource)->execute($request);
+        (new AddSourceService)->execute($request);
 
         $this->assertDatabaseHas('sources', [
             'id' => $source->id,
-            'type' => 'github.com',
-            'url' => 'https://github.com/monicahq/monica',
+            'username' => 'monicahq',
+            'repository' => 'monica',
         ]);
     }
 
     /** @test */
-    public function it_fails_if_wrong_parameters_are_given() : void
+    public function it_fails_if_wrong_parameters_are_given(): void
     {
         $request = [];
 
         $this->expectException(ValidationException::class);
-        (new AddSource)->execute($request);
+        (new AddSourceService)->execute($request);
     }
 }

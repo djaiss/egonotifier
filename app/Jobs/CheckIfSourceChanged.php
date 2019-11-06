@@ -4,12 +4,14 @@ namespace App\Jobs;
 
 use App\Models\Source;
 use Illuminate\Bus\Queueable;
+use App\Exceptions\NoHistoryException;
+use App\Services\AnalyzeSourceService;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class WarnUsers implements ShouldQueue
+class CheckIfSourceChanged implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -21,22 +23,13 @@ class WarnUsers implements ShouldQueue
     public $source;
 
     /**
-     * The nature of change.
-     *
-     * @var array
-     */
-    public $change;
-
-    /**
      * Create a new job instance.
      *
-     * @param Source $source
-     * @param string $change
+     * @return void
      */
-    public function __construct(Source $source, string $change)
+    public function __construct(Source $source)
     {
         $this->source = $source;
-        $this->change = $change;
     }
 
     /**
@@ -46,11 +39,12 @@ class WarnUsers implements ShouldQueue
      */
     public function handle()
     {
-        // find all the users that are subscribed to this source
-        $users = $this->source->users;
-
-        foreach ($users as $user) {
-            BuildEmail::dispatch($this->source, $this->change, $user);
+        try {
+            (new AnalyzeSourceService)->execute([
+                'source_id' => $this->source->id,
+            ]);
+        } catch (NoHistoryException $e) {
+            return;
         }
     }
 }

@@ -6,12 +6,10 @@ use App\Models\Source;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Exceptions\InvalidSourceException;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Services\FetchSourceInformationService;
 
-class FetchSourceData implements ShouldQueue
+class WarnUsersAboutChanges implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -23,13 +21,22 @@ class FetchSourceData implements ShouldQueue
     public $source;
 
     /**
+     * The nature of change.
+     *
+     * @var array
+     */
+    public $change;
+
+    /**
      * Create a new job instance.
      *
-     * @return void
+     * @param Source $source
+     * @param string $change
      */
-    public function __construct(Source $source)
+    public function __construct(Source $source, string $change)
     {
         $this->source = $source;
+        $this->change = $change;
     }
 
     /**
@@ -39,14 +46,11 @@ class FetchSourceData implements ShouldQueue
      */
     public function handle()
     {
-        try {
-            (new FetchSourceInformationService)->execute([
-                'source_id' => $this->source->id,
-            ]);
-        } catch (InvalidSourceException $e) {
-            exit;
-        }
+        // find all the users that are subscribed to this source
+        $users = $this->source->users;
 
-        CheckIfSourceChanged::dispatch($this->source)->onQueue('low');
+        foreach ($users as $user) {
+            BuildEmail::dispatch($this->source, $this->change, $user)->onQueue('low');
+        }
     }
 }

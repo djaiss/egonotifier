@@ -12,6 +12,20 @@ class SourceChanged extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * The source instance.
+     *
+     * @var array
+     */
+    public $source;
+
+    /**
+     * The sentence.
+     *
+     * @var array
+     */
+    public $sentence;
+
+    /**
      * Create a new message instance.
      *
      * @return void

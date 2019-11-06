@@ -64,11 +64,9 @@ class BuildEmail implements ShouldQueue
      */
     public function handle()
     {
-        $this->latestCheck = $this->source->checks()->latest()->first();
+        $this->latestCheck = $this->source->getLatestCheck();
 
-        if ($this->source->type == 'github.com') {
-            $sentence = $this->checkGithub();
-        }
+        $sentence = $this->checkGithub();
 
         SendEmail::dispatch($this->user, $this->source, $sentence);
     }
@@ -78,7 +76,7 @@ class BuildEmail implements ShouldQueue
      *
      * @return string
      */
-    private function checkGithub() : string
+    private function checkGithub(): string
     {
         $levelReached = 0;
         $currentValue = 0;
@@ -101,12 +99,6 @@ class BuildEmail implements ShouldQueue
             $currentValue = $this->latestCheck->forks;
             $levelReached = $levelHelper->getValue($this->latestCheck->forks_level);
             $sentence = 'has reached '.$levelReached.' forks (current number: '.$currentValue.').';
-        }
-
-        if ($this->change == 'commits') {
-            $currentValue = $this->latestCheck->commits;
-            $levelReached = $levelHelper->getValue($this->latestCheck->commits_level);
-            $sentence = 'has reached '.$levelReached.' commits (current number: '.$currentValue.').';
         }
 
         return $sentence;

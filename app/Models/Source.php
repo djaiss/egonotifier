@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use App\User;
-use ErrorException;
-use App\Helpers\LevelHelper;
-use Ixudra\Curl\Facades\Curl;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -18,8 +15,8 @@ class Source extends Model
      * @var array
      */
     protected $fillable = [
-        'type',
-        'url',
+        'username',
+        'repository',
         'valid',
     ];
 
@@ -53,66 +50,28 @@ class Source extends Model
     }
 
     /**
-     * Fetch the data of the source.
+     * Return the latest check.
      *
-     * @return void
+     * @return Check
      */
-    public function fetch()
+    public function getLatestCheck(): Check
     {
-        $response = Curl::to($this->buildUrl())
-            ->withHeader('User-Agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')
-            ->get();
-
-        // curl the url
-        // check the html code
-        // check the number of stars
-
-        $json = json_decode($response);
-
-        try {
-            $count = $json->stargazers_count;
-        } catch (ErrorException $e) {
-            $this->setInvalid();
-            return;
-        }
-
-        $check = Check::create([
-            'source_id' => $this->id,
-            'value' => $count,
-        ]);
-
-        $this->checkLevels($check);
+        return $this->checks()->latest()->first();
     }
 
     /**
-     * Set the source as being invalid.
+     * Get the next level for the given property for this source.
      *
-     * @return void
+     * @return null|int
      */
-    public function setInvalid() : void
+    public function getNextLevel(string $property)
     {
-        $this->valid = false;
-        $this->save();
-    }
+        $latestCheck = $this->checks()->latest()->first();
 
-    public function setCurrentLevel(Check $check)
-    {
-    }
-
-    /**
-     * Check whether the source has reached a level.
-     *
-     * @param Check $check
-     * @return void
-     */
-    public function checkLevels(Check $check)
-    {
-        $levelHelper = new LevelHelper();
-        $previousLevel = $this->current_level;
-        $actualLevel = $levelHelper->checkLevel($check->value);
-
-        if ($previousLevel != $actualLevel) {
+        if (!$latestCheck) {
             return;
         }
+
+        return $latestCheck->{$property} + 1;
     }
 }

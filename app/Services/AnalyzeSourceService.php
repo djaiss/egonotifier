@@ -3,11 +3,11 @@
 namespace App\Services;
 
 use App\Models\Source;
-use App\Jobs\WarnUsers;
+use App\Jobs\WarnUsersAboutChanges;
 use App\Exceptions\NoHistoryException;
 use App\Exceptions\InvalidSourceException;
 
-class AnalyzeSource extends BaseService
+class AnalyzeSourceService extends BaseService
 {
     /**
      * Get the validation rules that apply to the service.
@@ -37,9 +37,7 @@ class AnalyzeSource extends BaseService
             throw new InvalidSourceException();
         }
 
-        if ($source->type == 'github.com') {
-            $this->checkGithub($source);
-        }
+        $this->checkGithub($source);
 
         return $source;
     }
@@ -70,10 +68,6 @@ class AnalyzeSource extends BaseService
         if ($latestCheck->forks_level != $secondLastCheck->forks_level) {
             $this->warn($source, 'forks');
         }
-
-        if ($latestCheck->commits_level != $secondLastCheck->commits_level) {
-            $this->warn($source, 'commits');
-        }
     }
 
     /**
@@ -85,6 +79,6 @@ class AnalyzeSource extends BaseService
      */
     private function warn(Source $source, string $kind)
     {
-        WarnUsers::dispatch($source, $kind);
+        WarnUsersAboutChanges::dispatch($source, $kind)->onQueue('low');
     }
 };

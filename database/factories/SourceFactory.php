@@ -8,8 +8,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Source::class, function (Faker $faker) {
     return [
-        'type' => 'github.com',
-        'url' => 'https://github.com/monicahq/monica',
+        'username' => 'monicahq',
+        'repository' => 'monica',
         'valid' => true,
     ];
 });

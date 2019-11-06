@@ -5,24 +5,24 @@ namespace Tests\Unit\Jobs;
 use App\User;
 use Tests\TestCase;
 use App\Models\Source;
-use App\Jobs\WarnUsers;
 use App\Jobs\BuildEmail;
+use App\Jobs\WarnUsersAboutChanges;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class WarnUsersTest extends TestCase
+class WarnUsersAboutChangesTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
-    public function it_doesnt_warn_users_if_no_users_follow_a_source() : void
+    public function it_doesnt_warn_users_if_no_users_follow_a_source(): void
     {
         Bus::fake();
 
         $source = factory(Source::class)->create([]);
         $change = 'forks';
 
-        $job = new WarnUsers($source, $change);
+        $job = new WarnUsersAboutChanges($source, $change);
         $job->handle();
 
         Bus::assertNotDispatched(BuildEmail::class);
@@ -45,7 +45,7 @@ class WarnUsersTest extends TestCase
             $dwight->id
         );
 
-        $job = new WarnUsers($source, $change);
+        $job = new WarnUsersAboutChanges($source, $change);
         $job->handle();
 
         Bus::assertDispatched(BuildEmail::class, 2);

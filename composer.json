@@ -13,10 +13,12 @@
         "friendsofphp/php-cs-fixer": "^2.15",
         "guzzlehttp/guzzle": "^6.3",
         "ixudra/curl": "^6.16",
-        "laravel/framework": "5.8.*",
+        "knplabs/github-api": "^2.12",
+        "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "league/uri-parser": "^1.4",
         "paquettg/php-html-parser": "^2.1",
+        "php-http/guzzle6-adapter": "^1.1",
         "vimeo/psalm": "^3.6",
         "voku/simple_html_dom": "^4.7"
     },
@@ -24,6 +26,7 @@
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "laravel/ui": "^1.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^7.5"
