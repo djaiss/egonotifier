@@ -12,7 +12,7 @@
 
     <div class="fl w-100 w-80-ns pa2">
       <h2>Monitored repositories <a href="/add" class="fr-ns db mt3 mt0-ns btn bg-white f5 ph3 pv2-ns pv3 fw4 br3">+ Add a repository</a></h2>
-      <p class="lh-copy">Egonotifier will send you an email (on <span>{{ $email }}</span>) as soon as a repository reaches the next threshold for one of the three criteria (stars, forks or watchers).</p>
+      <p class="lh-copy">Egonotifier will send you an email (on <span>{{ $email }}</span>) as soon as a repository reaches the next milestone for one of the three criteria (stars, forks or watchers).</p>
 
       @foreach ($sources as $source)
       <div class="box bg-white pa3 mb3">
