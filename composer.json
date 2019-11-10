@@ -19,6 +19,7 @@
         "league/uri-parser": "^1.4",
         "paquettg/php-html-parser": "^2.1",
         "php-http/guzzle6-adapter": "^1.1",
+        "predis/predis": "^1.1",
         "vimeo/psalm": "^3.6",
         "voku/simple_html_dom": "^4.7"
     },
