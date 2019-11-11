@@ -58,7 +58,10 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
+        $message = (new SourceChanged($this->source, $this->sentence))
+            ->onQueue('low');
+
         Mail::to($this->user->email)
-            ->queue(new SourceChanged($this->source, $this->sentence));
+            ->queue($message);
     }
 }
