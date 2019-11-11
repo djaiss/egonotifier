@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(FetchAllSources::class)->everyFiveMinutes();
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
     }
 
     /**
