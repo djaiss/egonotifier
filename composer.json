@@ -15,6 +15,7 @@
         "ixudra/curl": "^6.16",
         "knplabs/github-api": "^2.12",
         "laravel/framework": "^6.0",
+        "laravel/horizon": "^3.4",
         "laravel/tinker": "^1.0",
         "league/uri-parser": "^1.4",
         "paquettg/php-html-parser": "^2.1",
