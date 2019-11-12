@@ -79,8 +79,31 @@ a:visited {
 .marketing {
   background-color: #fff;
 
-  p {
+  p,
+  li,
+  ol {
     font-size: 18px;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: 15px;
+    line-height: 25px;
+  }
+
+  ol {
+    counter-reset: item;
+  }
+
+  ol > li {
+    counter-increment: item;
+
+    &:before {
+      content: counters(item,".") ". ";
+      font-weight: 500;
+      float: left;
+      margin: 0 0 0 -2rem;
+    }
   }
 
   .quote {
@@ -95,5 +118,19 @@ a:visited {
     background-color: #007dcc;
     color: #fff;
     text-shadow: 0 1px 1px #005e99;
+  }
+
+  .note {
+    font-size: 15px;
+  }
+
+  .footer {
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      font-size: 15px;
+    }
   }
 }
