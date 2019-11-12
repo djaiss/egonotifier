@@ -9074,3 +9074,25 @@ a:visited {
   background-color: #fff5f5;
 }
 
+.marketing {
+  background-color: #fff;
+}
+
+.marketing p {
+  font-size: 18px;
+}
+
+.marketing .quote {
+  font-size: 24px;
+}
+
+.marketing .screenshot {
+  box-shadow: 0 0 0 0.0625rem rgba(18, 18, 18, 0.1), 0 0.0625rem 2.5rem rgba(18, 18, 18, 0.1);
+}
+
+.marketing .cta {
+  background-color: #007dcc;
+  color: #fff;
+  text-shadow: 0 1px 1px #005e99;
+}
+
