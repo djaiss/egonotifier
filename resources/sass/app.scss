@@ -75,3 +75,62 @@ a:visited {
   border-color: #fc8181;
   background-color: #fff5f5;
 }
+
+.marketing {
+  background-color: #fff;
+
+  p,
+  li,
+  ol {
+    font-size: 18px;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: 15px;
+    line-height: 25px;
+  }
+
+  ol {
+    counter-reset: item;
+  }
+
+  ol > li {
+    counter-increment: item;
+
+    &:before {
+      content: counters(item,".") ". ";
+      font-weight: 500;
+      float: left;
+      margin: 0 0 0 -2rem;
+    }
+  }
+
+  .quote {
+    font-size: 24px;
+  }
+
+  .screenshot {
+    box-shadow: 0 0 0 0.0625rem rgba(18,18,18,.1), 0 0.0625rem 2.5rem rgba(18,18,18,.1);
+  }
+
+  .cta {
+    background-color: #007dcc;
+    color: #fff;
+    text-shadow: 0 1px 1px #005e99;
+  }
+
+  .note {
+    font-size: 15px;
+  }
+
+  .footer {
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      font-size: 15px;
+    }
+  }
+}
