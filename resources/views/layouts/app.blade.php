@@ -18,11 +18,17 @@
   <div class="dn db-m db-l">
     <nav class="flex justify-between bb b--white-10 pa3">
       <div class="flex-grow pa2 flex items-center">
-        <a href="/home"><img src="/img/logo.png" width="86" height="19" /></a>
+        <a href="/"><img src="/img/logo.png" width="86" height="19" /></a>
       </div>
+      @if (Auth::check())
       <div class="flex-grow pa2 flex items-center">
         <a href="/logout">Logout</a>
       </div>
+      @else
+      <div class="flex-grow pa2 flex items-center">
+        <a href="/login">Login</a>
+      </div>
+      @endif
     </nav>
   </div>
 
