@@ -36,4 +36,53 @@ class SourceTest extends TestCase
             $source->getNextLevel('watchers_level')
         );
     }
+
+    /** @test */
+    public function it_gets_the_latest_check(): void
+    {
+        $source = factory(Source::class)->create([]);
+        factory(Check::class)->create([
+            'source_id' => $source->id,
+        ]);
+
+        // yes it’s ugly, but if I don't pause, the orderBy created_at date
+        // will be the same for the 3 records, therefore it will screw the
+        // query
+        sleep(1);
+        factory(Check::class)->create([
+            'source_id' => $source->id,
+        ]);
+        sleep(1);
+        $check3 = factory(Check::class)->create([
+            'source_id' => $source->id,
+        ]);
+
+        $this->assertEquals(
+            $check3->id,
+            $source->getLatestCheck()->id
+        );
+    }
+
+    /** @test */
+    public function it_gets_the_highest_level_reached(): void
+    {
+        $source = factory(Source::class)->create([]);
+        factory(Check::class)->create([
+            'source_id' => $source->id,
+            'watchers_level' => 10,
+        ]);
+        factory(Check::class)->create([
+            'source_id' => $source->id,
+            'watchers_level' => 234,
+        ]);
+        factory(Check::class)->create([
+            'source_id' => $source->id,
+            'watchers_level' => 5,
+        ]);
+
+        $this->assertEquals(
+            234,
+            $source->getHighestLevelEverReached('watchers_level')
+        );
+    }
 }

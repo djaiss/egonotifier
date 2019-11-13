@@ -60,8 +60,26 @@ class Source extends Model
     }
 
     /**
+     * Return the highest level ever reached for a given property.
+     *
+     * @param string $property
+     * @return Check
+     */
+    public function getHighestLevelEverReached(string $property)
+    {
+        $highestCheck = $this->checks()->orderBy($property, 'desc')->first();
+
+        if (!$highestCheck) {
+            return;
+        }
+
+        return $highestCheck->{$property};
+    }
+
+    /**
      * Get the next level for the given property for this source.
      *
+     * @param string $property
      * @return null|int
      */
     public function getNextLevel(string $property)

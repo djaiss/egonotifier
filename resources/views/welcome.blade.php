@@ -20,9 +20,15 @@
       <div class="flex-grow pa2 flex items-center">
         <a href="/home"><img src="/img/logo.png" width="86" height="19" /></a>
       </div>
+      @if (Auth::check())
       <div class="flex-grow pa2 flex items-center">
         <a href="/logout">Logout</a>
       </div>
+      @else
+      <div class="flex-grow pa2 flex items-center">
+        <a href="/login">Login</a>
+      </div>
+      @endif
     </nav>
   </div>
 
@@ -69,7 +75,7 @@
 
         <h3 class="tc f3 fw4">But wait, do you know what you are talking about?</h3>
 
-        <p class="lh-copy">I have the same problems that you have. I have <a href="https://monicahq.com">a decently popular repository on Github</a>, but I always forget to check the number of stars (aka the graal for us, open source developers). I wish I could celebrate important milestones, the minute it happens, and not three months later when I realize that my repository has reached 1000 stars.</p>
+        <p class="lh-copy">I have the same problems that you have. I have <a href="https://github.com/monicahq/monica">a decently popular repository on Github</a>, but I always forget to check the number of stars (aka the graal for us, open source developers). I wish I could celebrate important milestones, the minute it happens, and not three months later when I realize that my repository has reached 1000 stars.</p>
 
         <p class="lh-copy mb5">I created Egonotifier because I care about my work, and I want to know if what I do is appreciated.</p>
 
