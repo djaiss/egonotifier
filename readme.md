@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-    **Egonotifier monitors repositories you care about and sends you an email when they reach new milestones.**
+    <strong>Egonotifier monitors repositories you care about and sends you an email when they reach new milestones.</strong>
 </div>
 
 <div align="center">
