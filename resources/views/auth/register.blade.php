@@ -4,7 +4,7 @@
 <div class="mw7 center ph3-ns mt4">
   <div class="cf ph2-ns">
     <div class="box bg-white pa3 mb3">
-      <form method="POST" action="{{ route('login') }}">
+      <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <div class="form-group row mb3">

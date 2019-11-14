@@ -43,6 +43,7 @@ class SourceChanged extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.source.changed');
+        return $this->markdown('emails.source.changed')
+            ->subject($this->source->username.'/'.$this->source->repository.' has grown on Github');
     }
 }
