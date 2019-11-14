@@ -10,9 +10,16 @@
     <img src="public/img/homepage-2x.png">
 </div>
 
-## Installation and usage
+## System requirements
 
-This software requires PHP 7.2+, Composer, yarn, mySQL 5.8+ and Redis (or you can use the database, but it’s not ideal).
+* Yarn
+* PHP 7.2+,
+* Composer
+* Web-server (Nginx or Apache2)
+* Database (MySQL/MariaDB or PostgreSQL)
+* Redis
+
+## Installation and usage
 
 Once the repository is pulled, you have a couple of commands to run:
 
