@@ -2,9 +2,9 @@
 The following repository:
 
 ***********
-https:/github.com/{{ $source->username }}/{{ $source->repository }}
-***********
+<a href="https:/github.com/{{ $source->username }}/{{ $source->repository }}">https:/github.com/{{ $source->username }}/{{ $source->repository }}</a>
+  ***********
 
-{{ $sentence }}
+  {{ $sentence }}
 
-@endcomponent
+  @endcomponent
