@@ -2,7 +2,9 @@
     <img src="public/img/logo.png">
 </div>
 
-**Egonotifier monitors repositories you care about and sends you an email when they reach new milestones.**
+<div align="center">
+    **Egonotifier monitors repositories you care about and sends you an email when they reach new milestones.**
+</div>
 
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
