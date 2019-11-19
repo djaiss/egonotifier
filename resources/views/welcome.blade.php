@@ -18,7 +18,7 @@
   <div class="dn db-m db-l">
     <nav class="flex justify-between bb b--white-10 pa3">
       <div class="flex-grow pa2 flex items-center">
-        <a href="/home"><img src="/img/logo.png" width="86" height="19" /></a>
+        <a href="/"><img src="/img/logo.png" width="116" height="19" /></a>
       </div>
       @if (Auth::check())
       <div class="flex-grow pa2 flex items-center">
@@ -26,7 +26,14 @@
       </div>
       @else
       <div class="flex-grow pa2 flex items-center">
-        <a href="/login">Login</a>
+        <ul class="list">
+          <li class="di ma2">
+            <a href="/register">Register</a>
+          </li>
+          <li class="di">
+            <a href="/login">Login</a>
+          </li>
+        </ul>
       </div>
       @endif
     </nav>
@@ -112,6 +119,10 @@
 
         <p class="lh-copy mb5">Egonotifier doesn't require a subscription. There is a single, one-time fee. Therefore you can't cancel. However, you can delete your account at anytime.</p>
 
+        <h3 class="tc f3 fw4">Are there refunds?</h3>
+
+        <p class="lh-copy mb5">No.</p>
+
         <h3 class="tc f3 fw4">Am I limited to my own repositories?</h3>
 
         <p class="lh-copy mb5">No. You can monitor any public repository on Github. Yours or someone else's.</p>
@@ -133,6 +144,7 @@
         <p class="lh-copy note tc mb4">Made by <a href="https://twitter.com/djaiss">@djaiss</a> in Montréal, Canada in the year 2019.</p>
         <ul class="pl0 tc footer">
           <li class="di mr3">🙈 You are not being tracked.</li>
+          <li class="di mr3"><a href="https://github.com/djaiss/egonotifier">This project is open source</a> 😇</li>
           <li class="di mr3">Privacy policy</li>
           <li class="di">Terms of use</li>
         </ul>

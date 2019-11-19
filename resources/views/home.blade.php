@@ -4,15 +4,25 @@
 <div class="mw9 center ph3-ns">
   <div class="cf ph2-ns">
     <div class="fl w-100 w-20-ns pa2 pr4-ns">
-      <ul class="list pa0 menu">
+      <ul class="list-app pa0 menu">
         <li class="bg-white pa3 bb b--moon-gray b active">Dashboard</li>
         <li class="bg-white pa3"><a href="/account">Account</a></li>
       </ul>
     </div>
 
     <div class="fl w-100 w-80-ns pa2">
-      <h2>Monitored repositories <a href="/add" class="fr-ns db mt3 mt0-ns btn bg-white f5 ph3 pv2-ns pv3 fw4 br3">+ Add a repository</a></h2>
-      <p class="lh-copy">Egonotifier will send you an email (on <span>{{ $email }}</span>) as soon as a repository reaches the next milestone for one of the three criteria (stars, forks or watchers).</p>
+      <h2 class="fw5">Monitored repositories
+        @if ($sources->count() != 0)
+        <a href="/add" class="fr-ns db mt3 mt0-ns btn bg-white f5 ph3 pv2-ns pv3 fw4 br3">+ Add a repository</a>
+        @endif
+      </h2>
+      <p class="lh-copy">Egonotifier will send you an email (on <span class="bg-white ph2 pv1 br3">{{ $email }}</span>) as soon as a repository reaches the next milestone for one of those three criteria: stars, forks or watchers. Checks are made every five minutes.</p>
+
+      @if ($sources->count() == 0)
+      <div class="mt5 tc">
+        <a href="/add" class="mt3 mt0-ns btn bg-white f5 ph3 pv2-ns pv3 fw4 br3">+ Monitor your first repository</a>
+      </div>
+      @endif
 
       @foreach ($sources as $source)
       <div class="box bg-white pa3 mb3">
