@@ -3,70 +3,60 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Stripe\Exception\ApiErrorException;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function show()
     {
-        $this->middleware('guest');
+        return view('auth.register');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function store(Request $request)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+        $validator = Validator::make($request->all(), [
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
-    }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        if (env('PAY_DURING_REGISTRATION') == true) {
+            \Stripe\Stripe::setApiKey(env('STRIPE_API_KEY'));
+
+            $token = $request->get('stripeToken');
+            try {
+                $charge = \Stripe\Charge::create([
+                    'amount' => 1000,
+                    'currency' => 'usd',
+                    'description' => 'Egonotifier',
+                    'source' => $token,
+                ]);
+            } catch (ApiErrorException $e) {
+                return back()
+                    ->withInput();
+            }
+        }
+
+        $user = User::create([
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
         ]);
+
+        Auth::attempt([
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ]);
+
+        return redirect('/home');
     }
 }

@@ -4,9 +4,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Route::get('register', 'Auth\\RegisterController@show')->name('register');
+Route::post('register', 'Auth\\RegisterController@store');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/create', 'URLController@store');
-Route::get('/add', 'URLController@create');
-Route::get('logout', 'Auth\\LoginController@logout');
+//Auth::routes(['verify' => true]);
+Auth::routes(['register' => false]);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/create', 'URLController@store');
+    Route::get('/add', 'URLController@create');
+    Route::get('/account', 'AccountController@show');
+    Route::get('/delete', 'AccountController@destroy');
+    Route::get('logout', 'Auth\\LoginController@logout');
+});

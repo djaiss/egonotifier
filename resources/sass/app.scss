@@ -12,7 +12,8 @@ body {
   border-radius: 10px;
 }
 
-.list {
+.list-app {
+  list-style-type: none;
   border-color: #DFE1E5;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.06);
 }
@@ -133,4 +134,32 @@ a:visited {
       font-size: 15px;
     }
   }
+}
+
+.StripeElement {
+  box-sizing: border-box;
+
+  height: 40px;
+
+  padding: 10px 12px;
+
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }
