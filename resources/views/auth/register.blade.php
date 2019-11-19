@@ -46,7 +46,7 @@
 
         @if (env('PAY_DURING_REGISTRATION') == true)
         <label for="card-element" class="dib mb2">
-          Credit or debit card for the $10 one-time fee (handled by <a href="https://stripe.com">Stripe</a>)
+          Credit or debit card for the <strong>$10 one-time fee</strong> (handled by <a href="https://stripe.com">Stripe</a>)
         </label>
         <div id="card-element" class="mb4">
           <!-- A Stripe Element will be inserted here. -->

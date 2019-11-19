@@ -53,7 +53,7 @@
         color: "#32325d",
       }
     };
-    var stripe = Stripe('pk_ffbmX2ktRBqDfUMU7RxlFMIATRDvE');
+    var stripe = Stripe('{{ env('STRIPE_PK') }}');
 
     // Create an instance of the card Element.
     var elements = stripe.elements();
