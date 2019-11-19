@@ -12,6 +12,11 @@
 
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
   <script src="{{ mix('/js/app.js') }}" defer></script>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:creator" content="@djaiss" />
+  <meta property="og:title" content="Be warned when your Github's repository grows" />
+  <meta property="og:description" content="Egonotifier monitors repositories you care about and sends you an email when they reach new milestones." />
+  <meta property="og:image" content="https://egonotifier.com/img/twitter.png" />
 </head>
 
 <body class="marketing">
