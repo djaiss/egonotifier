@@ -30,7 +30,7 @@ class RegisterController extends Controller
                 ->withErrors($validator);
         }
 
-        if (env('PAY_DURING_REGISTRATION') == true) {
+        if (env('PAY_TO_MONITOR') == true) {
             \Stripe\Stripe::setApiKey(env('STRIPE_API_KEY'));
 
             $token = $request->get('stripeToken');

@@ -4,6 +4,10 @@
 
 <div align="center">
     <strong>Egonotifier monitors repositories you care about and sends you an email when they reach new milestones.</strong>
+    <p align="center">
+        <a href="https://github.com/djaiss/egonotifier"><img alt="GitHub Actions status" src="https://github.com/djaiss/egonotifier/workflows/Unit%20tests/badge.svg"></a>
+    </p>
+</p>
 </div>
 
 ## What you'll get
