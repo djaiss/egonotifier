@@ -44,17 +44,6 @@
           </div>
         </div>
 
-        @if (env('PAY_DURING_REGISTRATION') == true)
-        <label for="card-element" class="dib mb2">
-          Credit or debit card for the <strong>$10 one-time fee</strong> (handled by <a href="https://stripe.com">Stripe</a>)
-        </label>
-        <div id="card-element" class="mb4">
-          <!-- A Stripe Element will be inserted here. -->
-        </div>
-        <!-- Used to display Element errors. -->
-        <div id="card-errors" role="alert"></div>
-        @endif
-
         <div class="mb-0">
           <div class=" offset-md-4 tc">
             <button class="pointer btn btn bg-white f5 ph3 pv2 fw4 br3 di-ns db w-100 w-50-ns mt3 mt0-ns mr3">

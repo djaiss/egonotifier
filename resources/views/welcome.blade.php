@@ -65,7 +65,9 @@
   <div class="mw7 center ph3-ns">
     <div class="cf ph2-ns">
       <div class="fl w-100 pa2 pr4-ns">
-        <p class="tc mb5"><a href="/register" class="ph4 pv3 cta br3 no-underline">Get started</a></p>
+        <p class="tc mb4"><a href="/register" class="ph4 pv3 cta br3 no-underline">Get started</a></p>
+
+        <p class="tc mb5 f6">The first repository is free. Unlock unlimited repositories for a $10 one-time fee.</p>
 
         <p class="lh-copy quote tc mb5">"I have a repository on Github, but I keep missing important milestones, like when it reached 500 stars."</p>
 
@@ -98,9 +100,6 @@
         <ol>
           <li>
             Create your account,
-          </li>
-          <li>
-            Pay a one-time fee (more on that later),
           </li>
           <li>
             Indicate which repositories you want to monitor. It could be one of your repo, or any other public repo on Github.
