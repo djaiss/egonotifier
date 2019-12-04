@@ -17,6 +17,7 @@
   <meta property="og:title" content="Be warned when your Github's repository grows" />
   <meta property="og:description" content="Egonotifier monitors repositories you care about and sends you an email when they reach new milestones." />
   <meta property="og:image" content="https://egonotifier.com/img/twitter.png" />
+  <meta name="twitter:image" content="https://egonotifier.com/img/twitter.png" />
 </head>
 
 <body>
