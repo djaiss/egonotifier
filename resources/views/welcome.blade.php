@@ -17,6 +17,7 @@
   <meta property="og:title" content="Be warned when your Github's repository grows" />
   <meta property="og:description" content="Egonotifier monitors repositories you care about and sends you an email when they reach new milestones." />
   <meta property="og:image" content="https://egonotifier.com/img/twitter.png" />
+  <meta name="twitter:image" content="https://egonotifier.com/img/twitter.png" />
 </head>
 
 <body class="marketing">
@@ -66,7 +67,7 @@
     <div class="cf ph2-ns">
       <div class="fl w-100 pa2 pr4-ns">
         <p class="tc mb4"><a href="/register" class="ph4 pv3 cta br3 no-underline">Get started</a></p>
-        
+
         <p class="tc mb5 f6">It’s a free service. No strings attached.</p>
 
         <p class="lh-copy quote tc mb5">"I have a repository on Github, but I keep missing important milestones, like when it reached 500 stars."</p>
