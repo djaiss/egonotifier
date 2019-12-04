@@ -13,7 +13,7 @@
     <div class="fl w-100 w-80-ns pa2">
       <h2 class="fw5">Delete your account</h2>
       <p>Click here to <a href="/delete" onclick="return confirm('Are you sure?')">delete your account</a>.</p>
-      <p>⚠️ There are no refunds, and we will destroy all of your account's data.</p>
+      <p>⚠️ We will destroy all of your account's data, forever.</p>
 
     </div>
   </div>
