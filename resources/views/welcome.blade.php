@@ -66,7 +66,7 @@
     <div class="cf ph2-ns">
       <div class="fl w-100 pa2 pr4-ns">
         <p class="tc mb4"><a href="/register" class="ph4 pv3 cta br3 no-underline">Get started</a></p>
-
+        
         <p class="tc mb5 f6">It’s a free service. No strings attached.</p>
 
         <p class="lh-copy quote tc mb5">"I have a repository on Github, but I keep missing important milestones, like when it reached 500 stars."</p>
