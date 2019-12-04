@@ -67,7 +67,7 @@
       <div class="fl w-100 pa2 pr4-ns">
         <p class="tc mb4"><a href="/register" class="ph4 pv3 cta br3 no-underline">Get started</a></p>
 
-        <p class="tc mb5 f6">The first repository is free. Unlock unlimited repositories for a $10 one-time fee.</p>
+        <p class="tc mb5 f6">It’s a free service. No strings attached.</p>
 
         <p class="lh-copy quote tc mb5">"I have a repository on Github, but I keep missing important milestones, like when it reached 500 stars."</p>
 
@@ -111,21 +111,21 @@
 
         <p class="lh-copy mb5">That's it. <strong>Egonotifier will take care of checking the repositories you care about every day</strong>. More than every day in fact. It will make 288 checks per day, for each one of your repositories.</p>
 
-        <h3 class="tc f3 fw4">Why are you charging for this service?</h3>
+        <h3 class="tc f3 fw4">Why don't you charge for this service?</h3>
 
-        <p class="lh-copy mb5">Egonotifier will warn you by email. To make sure emails are delivered to your inbox, I need to use a good service so emails won't get caught in a spam filter somewhere. <a href="https://postmarkapp.com">Postmark</a> is excellent for this, but it’s not cheap. By charging a one-time fee, I make sure that I will cover these costs and the cost of the service itself.</p>
+        <p class="lh-copy mb5">Because I believe that the world would be better if everyone would provide cool stuff for free. Also, reputation.</p>
 
-        <h3 class="tc f3 fw4">Are there hidden fees? Is it really a one-time fee?</h3>
+        <h3 class="tc f3 fw4">Are there hidden fees?</h3>
 
-        <p class="lh-copy mb5">There are no hidden fees. I don't want to add another subscription to your life. I provide a simple service with a great value, for a fair, fixed, non-recurring fee.</p>
+        <p class="lh-copy mb5">There are no hidden fees. I don't want to add another subscription to your life. I provide a simple service that I hope you'll like. In return, you could <a href="https://twitter.com/djaiss">follow me on Twitter</a>.</p>
 
         <h3 class="tc f3 fw4">Can I cancel at anytime?</h3>
 
-        <p class="lh-copy mb5">Egonotifier doesn't require a subscription. There is a single, one-time fee. Therefore you can't cancel. However, you can delete your account at anytime.</p>
+        <p class="lh-copy mb5">Egonotifier doesn't require a subscription. Therefore you can't cancel. However, you can delete your account at anytime.</p>
 
         <h3 class="tc f3 fw4">Are there refunds?</h3>
 
-        <p class="lh-copy mb5">No.</p>
+        <p class="lh-copy mb5">But I just said... Ok. Calm down. No, there are no refunds because the service is free.</p>
 
         <h3 class="tc f3 fw4">Am I limited to my own repositories?</h3>
 
@@ -147,10 +147,8 @@
 
         <p class="lh-copy note tc mb4">Made by <a href="https://twitter.com/djaiss">@djaiss</a> in Montréal, Canada in the year 2019.</p>
         <ul class="pl0 tc footer">
-          <li class="di mr3">🙈 You are not being tracked.</li>
-          <li class="di mr3"><a href="https://github.com/djaiss/egonotifier">This project is open source</a> 😇</li>
-          <li class="di mr3">Privacy policy</li>
-          <li class="di">Terms of use</li>
+          <li class="mr3">🙈 You are not being tracked, and I don't do anything with your data.</li>
+          <li class="mr3"><a href="https://github.com/djaiss/egonotifier">This project is open source</a> 😇</li>
         </ul>
       </div>
     </div>
